@@ -8,14 +8,18 @@
     <!-- daysiUI and tailwind link -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
         <nav>
-            <div class="flex justify-between border-b-2 px-20 py-8 ">
-                <div class="flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28" viewBox="0 0 32 32" fill="none">
+            <div class="flex justify-between border-b-2 mx-20 py-7">
+                <div class="flex gap-2 py-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="32" viewBox="0 0 32 32" fill="none">
                         <g clip-path="url(#clip0_13_1170)">
                             <path
                                 d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z"
@@ -34,17 +38,21 @@
                             </clipPath>
                         </defs>
                     </svg>
-                    <h3 class="text-xl">PH Tube</h3>
+                    <h3 class="text-2xl font-bold"><span class="text-red-600">PH</span> Tube</h3>
                 </div>
-                <button class="btn ">Neutral</button>
-                <button class="btn btn-error text-white rounded-none bg-red-600">Error</button>
+                <button class="btn rounded-md">Sort by view</button>
+                <button class="btn btn-error text-white rounded-md bg-red-600 hover:bg-red-600">Blog</button>
             </div>
         </nav>
     </header>
     <main>
         <section>
+            <div id="card-button" class="flex justify-center gap-5 py-6"></div>
+            <div id="card-container" class="card-container grid grid-cols-4 mx-20 gap-6">
+            </div>
         </section>
     </main>
+
 
     <script src="JS/index.js"></script>
 </body>
