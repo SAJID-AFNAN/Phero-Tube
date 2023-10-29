@@ -28,7 +28,7 @@ const showCard = async () => {
         const div = document.createElement('div');
         div.innerHTML = `
     <div class="card w-auto bg-base-100 shadow-xl">
-        <figure><img src=${singleCard.thumbnail}/></figure>
+        <figure class="h-44"><img src=${singleCard.thumbnail}/></figure>
         <div class="card-body card-side">
             <div class="avatar mr-3">
                 <div class="w-10 h-10 rounded-full">
@@ -36,8 +36,8 @@ const showCard = async () => {
                 </div>
             </div>
             <div>
-                <h2 class="card-title">${singleCard.title}</h2>
-                <p>${singleCard.authors[0]?.profile_name}</p>
+                <h2 class="font-bold text-base">${singleCard.title}</h2>
+                <p class="py-1">${singleCard.authors[0]?.profile_name}</p>
                 <div class="card-actions">
                     <p>${singleCard.others?.views} views<p>
                 </div>
