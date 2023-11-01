@@ -7,7 +7,7 @@ const showButton = async () => {
     const cardButton = document.getElementById('card-button')
 
     AllData.forEach(singleData => {
-        console.log(singleData)
+        // console.log(singleData)
         const div = document.createElement('div')
         div.innerHTML = `
         <button onclick="showCard('${singleData.category_id}')" class="btn rounded-md">${singleData.category}</button>
@@ -20,7 +20,7 @@ const showCard = async (id) => {
     toggleLoading(true)
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`)
     const data = await response.json()
-    console.log(id)
+    // console.log(id)
     let cardData = data.data
     console.log(cardData)
     const cardContainer = document.getElementById('card-container')
@@ -62,6 +62,13 @@ const toggleLoading = (isloading) => {
         loadingSpiner.classList.add('hidden')
     }
 }
+
+
+//Go to the Blog.html page
+function blogbutton() {
+    window.location.href = 'Blog.html';
+}
+
 
 showButton();
 // showCard()
