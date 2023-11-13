@@ -10,7 +10,7 @@ const showButton = async () => {
         // console.log(singleData)
         const div = document.createElement('div')
         div.innerHTML = `
-        <button onclick="loadData('${singleData.category_id}')" class="btn rounded-md">${singleData.category}</button>
+        <button onclick="loadData('${singleData.category_id}')" class="btn rounded-md p-3 text-xs lg:text-sm lg:px-5 md:text-sm md:px-5">${singleData.category}</button>
         `
         cardButton.appendChild(div);
     })
