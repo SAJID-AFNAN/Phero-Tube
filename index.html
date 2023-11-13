@@ -40,7 +40,7 @@
                     </svg>
                     <h3 class="text-2xl font-bold"><span class="text-red-600">PH</span> Tube</h3>
                 </div>
-                <button class="btn rounded-md">Sort by view</button>
+                <button onclick="sortByViews()" class="btn rounded-md" >Sort by view</button>
                 <button onclick="blogbutton()" class="btn btn-error text-white rounded-md bg-red-600 hover:bg-red-600">Blog</button>
             </div>
         </nav>
@@ -61,3 +61,40 @@
 </body>
 
 </html>
+
+
+
+<!-- 
+showButton();
+// showCard()
+const  shortbtn=async()=>{
+    const response = await fetch('https://openapi.programming-hero.com/api/videos/category/1000')
+    const data = await response.json();
+
+    let AllData = data.data;
+console.log(AllData)
+// AllData.map(new=(a)=>{
+//     console.log(a.others.views)
+// })
+const sorted=  AllData.sort((a, b) => {
+    const viewsA = parseInt(a.others.views);
+    const viewsB = parseInt(b.others.views);
+  
+    return viewsB - viewsA; // Sort in descending order
+  });
+  
+
+console.log("sorted array",sorted)
+AllData.map(item => console.log(item.others.views))
+
+showCard(1000)
+
+}
+const showNote=()=>{
+    const categories=document.getElementById("cardCategory")
+    categories.classList.add("bg-blue-500")
+}
+const blur=()=>{
+    const categories=document.getElementById("cardCategory")
+    categories.classList.add("bg-white")
+} -->
