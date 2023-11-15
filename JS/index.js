@@ -21,7 +21,8 @@ const showButton = async () => {
 let publicData = null;
 
 const loadData = async (id) => {
-
+    // console.log(id)
+    // single card style 
     const btn = document.getElementById('btn')
     btn.style.backgroundColor = 'red';
     btn.style.color = 'white'
@@ -54,7 +55,7 @@ const showCard = async (cardData) => {
     console.log(cardData)
 
     const noContent = document.getElementById('no-content')
-    // noContent.style.display = 'none';
+    noContent.style.display = 'none';
 
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = '';
@@ -71,7 +72,7 @@ const showCard = async (cardData) => {
             const div = document.createElement('div');
             div.innerHTML = `
         <div class="card w-auto bg-base-100 shadow-xl">
-            <figure class="h-44"><img src=${singleCard.thumbnail}/>
+            <figure class="h-44 relative"><img src=${singleCard.thumbnail}/> 
             ${timeString ? `<p class="bg-[#171717] text-white rounded-md text-xs p-1 absolute bottom-2 right-2" id="timeOnCard">${hour}hrs ${min}mins ago</p>` : ``}</figure>
             <div class="card-body card-side">
                 <div class="avatar mr-3">
