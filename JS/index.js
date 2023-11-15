@@ -10,7 +10,7 @@ const showButton = async () => {
         // console.log(singleData)
         const div = document.createElement('div')
         div.innerHTML = `
-        <button onclick="loadData('${singleData.category_id}')" class="btn rounded-md p-3 text-xs lg:text-sm lg:px-5 md:text-sm md:px-5">${singleData.category}</button>
+        <button id="btn" onclick="loadData('${singleData.category_id}')" class="btn rounded-md p-3 text-xs lg:text-sm lg:px-5 md:text-sm md:px-5">${singleData.category}</button>
         `
         cardButton.appendChild(div);
     })
@@ -21,12 +21,17 @@ const showButton = async () => {
 let publicData = null;
 
 const loadData = async (id) => {
+
+    const btn = document.getElementById('btn')
+    btn.style.backgroundColor = 'red';
+    btn.style.color = 'white'
+
     toggleLoading(true);
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const data = await response.json();
     publicData = data.data;
-    console.log(publicData);
-    showCard(data.data)
+    // console.log(publicData);
+    showCard(publicData)
 }
 
 
@@ -46,33 +51,50 @@ const sortByViews = () => {
 
 //any Card show section
 const showCard = async (cardData) => {
-    // console.log(cardData)
+    console.log(cardData)
+
+    const noContent = document.getElementById('no-content')
+    // noContent.style.display = 'none';
+
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = '';
 
-    cardData.forEach(singleCard => {
-        const div = document.createElement('div');
-        div.innerHTML = `
-    <div class="card w-auto bg-base-100 shadow-xl">
-        <figure class="h-44"><img src=${singleCard.thumbnail}/></figure>
-        <div class="card-body card-side">
-            <div class="avatar mr-3">
-                <div class="w-10 h-10 rounded-full">
-                <img src=${singleCard.authors[0]?.profile_picture}/>
+    if (cardData.length > 0) {
+        cardData.forEach(singleCard => {
+
+            const timeString = singleCard.others?.posted_date
+            const time = parseInt(timeString)
+            // console.log(time + 10)
+            const hour = parseInt(time / 3600);
+            const min = parseInt((time % 3600) / 60);
+
+            const div = document.createElement('div');
+            div.innerHTML = `
+        <div class="card w-auto bg-base-100 shadow-xl">
+            <figure class="h-44"><img src=${singleCard.thumbnail}/>
+            ${timeString ? `<p class="bg-[#171717] text-white rounded-md text-xs p-1 absolute bottom-2 right-2" id="timeOnCard">${hour}hrs ${min}mins ago</p>` : ``}</figure>
+            <div class="card-body card-side">
+                <div class="avatar mr-3">
+                    <div class="w-10 h-10 rounded-full">
+                    <img src=${singleCard.authors[0]?.profile_picture}/>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <h2 class="font-bold text-base">${singleCard.title}</h2>
-                <p class="py-1">${singleCard.authors[0]?.profile_name}</p>
-                <div class="card-actions">
-                    <p>${singleCard.others?.views} views<p>
+                <div>
+                    <h2 class="font-bold text-base">${singleCard.title}</h2>
+                    <p class="py-1">${singleCard.authors[0]?.profile_name}</p>
+                    <div class="card-actions">
+                        <p>${singleCard.others?.views} views<p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-        `
-        cardContainer.appendChild(div)
-    })
+            `
+            cardContainer.appendChild(div)
+        })
+    }
+    else {
+        noContent.style.display = 'block'
+    }
     toggleLoading(false)
 }
 
@@ -90,14 +112,10 @@ const toggleLoading = (isloading) => {
 }
 
 
-
 //Go to the Blog.html page
 function blogbutton() {
     window.location.href = 'Blog.html';
 }
 
 
-
 showButton();
-// sortByViews();
-// showCard()
