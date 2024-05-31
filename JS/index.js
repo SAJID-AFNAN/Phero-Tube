@@ -4,7 +4,7 @@ const showButton = async () => {
 
     let AllData = data.data;
     // console.log(AllData)
-    const cardButton = document.getElementById('card-button')
+    const cardButton = document.getElementById('card-button') 
 
     AllData.forEach(singleData => {
         // console.log(singleData)
